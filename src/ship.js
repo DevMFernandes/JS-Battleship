@@ -1,8 +1,13 @@
-const ship = (length) => {
-  const hit = (loc) => {
-    console.log(loc)
+function ship (length) {
+  let hits = 0
+
+  function hit () {
+    hits += 1
   }
-  return { length, hit }
+
+  function isSunk () {
+    return (hits >= length)
+  }
 }
 
 export default ship
