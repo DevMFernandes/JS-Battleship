@@ -1,8 +1,22 @@
 class Ship {
-  constructor (length = 0, hit = [], sunk = false) {
+  constructor (length = 0, location) {
     this.length = length
-    this.hit = hit
-    this.sunk = sunk
+  }
+
+  hit (pos) {
+    const shipLoc = {
+      A4: 'not hit',
+      A5: 'not hit',
+      A6: 'not hit'
+    }
+    if (shipLoc.pos) {
+      shipLoc.pos = 'hit'
+    }
+    return shipLoc
+  }
+
+  isSunk (bool = false) {
+    const shipLength = Ship.hit.shipLoc.length
   }
 }
 

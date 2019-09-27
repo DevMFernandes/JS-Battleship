@@ -94,7 +94,7 @@
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _mystyles_scss__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./mystyles.scss */ \"./src/mystyles.scss\");\n/* harmony import */ var _mystyles_scss__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_mystyles_scss__WEBPACK_IMPORTED_MODULE_0__);\n\n\nconsole.log('helloo')\n\n\n//# sourceURL=webpack:///./src/index.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _mystyles_scss__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./mystyles.scss */ \"./src/mystyles.scss\");\n/* harmony import */ var _mystyles_scss__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_mystyles_scss__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _ship__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ship */ \"./src/ship.js\");\n\r\n\r\n\r\nconsole.log('helloo')\r\n\r\nconst newShip = new _ship__WEBPACK_IMPORTED_MODULE_1__[\"default\"](3)\r\nconsole.log(Object.keys(newShip.hit()).length)\r\n\n\n//# sourceURL=webpack:///./src/index.js?");
 
 /***/ }),
 
@@ -106,6 +106,18 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _mys
 /***/ (function(module, exports, __webpack_require__) {
 
 eval("// extracted by mini-css-extract-plugin\n\n//# sourceURL=webpack:///./src/mystyles.scss?");
+
+/***/ }),
+
+/***/ "./src/ship.js":
+/*!*********************!*\
+  !*** ./src/ship.js ***!
+  \*********************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\nclass Ship {\r\n  constructor (length = 0, location) {\r\n    this.length = length\r\n  }\r\n\r\n  hit (pos) {\r\n    const shipLoc = {\r\n      A4: 'not hit',\r\n      A5: 'not hit',\r\n      A6: 'not hit'\r\n    }\r\n    if (shipLoc.pos) {\r\n      shipLoc.pos = 'hit'\r\n    }\r\n    return shipLoc\r\n  }\r\n\r\n  isSunk (bool = false) {\r\n    const shipLength = Ship.hit.shipLoc.length\r\n  }\r\n}\r\n\r\n/* harmony default export */ __webpack_exports__[\"default\"] = (Ship);\r\n\n\n//# sourceURL=webpack:///./src/ship.js?");
 
 /***/ })
 
