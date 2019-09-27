@@ -1,1 +1,3 @@
-import './mystyles.scss';
+import './mystyles.scss'
+
+console.log('helloo')
