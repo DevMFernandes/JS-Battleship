@@ -1,4 +1,4 @@
 import './mystyles.scss'
-import ship from './ship'
+import ship from './js/ship'
 
 console.log(ship())

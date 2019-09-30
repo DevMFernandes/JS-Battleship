@@ -1,5 +1,5 @@
-import gameBoard from './gameboard'
-import ship from './ship'
+import gameBoard from '../js/gameboard'
+import ship from '../js/ship'
 
 test('Place vertical ship of size 3', () => {
   const ship1 = ship(3)
