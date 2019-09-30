@@ -1,8 +1,13 @@
-const player = (board) => {
-  const attack = (enemy, location) => {
-    enemy.board.receiveAttack(location)
+const player = (enemyBoard, computer = false) => {
+  const attack = (location) => {
+    if (computer) {
+      const loc = '1,1'
+      enemyBoard.receiveAttack(loc)
+    } else {
+      enemyBoard.receiveAttack(location)
+    }
   }
-  return { attack, board }
+  return { attack }
 }
 
 export default player
