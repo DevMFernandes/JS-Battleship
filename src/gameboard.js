@@ -1,11 +1,13 @@
 import ship from './ship'
 
 const gameBoard = () => {
-  // const receiveAttack = (location) => {
-  //   if (hitShip){
-  //     correctShip.hit(loc)
-  //   }
-  // }
+  const receiveAttack = (location) => {
+    if (board[location] !== undefined && board[location] !== 'missed') {
+      board[location].hit(location)
+    } else {
+      board[location] = 'missed'
+    }
+  }
 
   const board = {}
 
@@ -25,13 +27,7 @@ const gameBoard = () => {
     }
   }
 
-  // const ship1 = ship(5)
-  // placeShip(ship1, 'A1', 'v')
-
-  // const ship2 = ship(3)
-  // placeShip(ship2, 'B1', 'v')
-
-  return { placeShip, board }
+  return { placeShip, board, receiveAttack }
 }
 
 export default gameBoard

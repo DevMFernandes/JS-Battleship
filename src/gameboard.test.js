@@ -18,3 +18,23 @@ test('Place horizontal ship of size 3', () => {
   expect(newBoard.board['2,1']).toBe(ship2)
   expect(newBoard.board['3,1']).toBe(ship2)
 })
+
+// test('test if board location has no ship', () => {
+//   const newBoard = gameBoard()
+//   expect(newBoard.receiveAttack('2,3')).toBe(false)
+// })
+
+test('check if board location has ship and fires its hit function', () => {
+  const ship3 = ship(1)
+  const newBoard = gameBoard()
+  newBoard.placeShip(ship3, '1,1', 'h')
+  newBoard.receiveAttack('1,1')
+  expect(ship3.isSunk()).toBe(true)
+})
+
+test('if no ship is found, check a missed shot', () => {
+  const newBoard = gameBoard()
+  const location = '1,1'
+  newBoard.receiveAttack(location)
+  expect(newBoard[location]).toBe('missed')
+})
