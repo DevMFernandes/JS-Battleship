@@ -1,14 +1,20 @@
+import gameBoard from './gameboard'
 import ship from './ship'
 
-test('ship should be sunk', () => {
-  const titanic = ship(1)
-  titanic.hit("A1")
-  expect(titanic.isSunk()).toBe(true)
+test('Place vertical ship of size 3 from A1 thru A3', () => {
+  const ship1 = ship(3)
+  const newBoard = gameBoard()
+  newBoard.placeShip(ship1, 'A1', 'v')
+  expect(newBoard.board.A1).toBe(ship1)
+  expect(newBoard.board.A2).toBe(ship1)
+  expect(newBoard.board.A3).toBe(ship1)
 })
 
-
-test('ship should not be sunk', () => {
-  const titanic = ship(2)
-  titanic.hit("A2")
-  expect(titanic.isSunk()).toBe(false)
+test('Place horizontal ship of size 3 from A1 thru C1', () => {
+  const ship1 = ship(3)
+  const newBoard = gameBoard()
+  newBoard.placeShip(ship1, 'A1', 'h')
+  expect(newBoard.board.A1).toBe(ship1)
+  expect(newBoard.board.B1).toBe(ship1)
+  expect(newBoard.board.C1).toBe(ship1)
 })
