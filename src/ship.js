@@ -1,13 +1,15 @@
-function ship (length) {
-  let hits = 0
+const ship = (len) => {
+  const hitPos = []
 
-  function hit () {
-    hits += 1
+  function hit (pos) {
+    hitPos.push(pos)
   }
 
   function isSunk () {
-    return (hits >= length)
+    return (hitPos.length >= len)
   }
+
+  return { hit, isSunk, len }
 }
 
 export default ship
