@@ -1,4 +1,4 @@
-import ship from './ship'
+// import ship from './ship'
 
 const gameBoard = () => {
   const receiveAttack = (location) => {
@@ -10,11 +10,13 @@ const gameBoard = () => {
   }
 
   const board = {}
+  const ships = []
 
   const placeShip = (ship, start, dir) => {
     const x = start.split(',')
     const startRow = parseInt(x[0])
     const startCol = parseInt(x[1])
+    ships.push(ship)
 
     if (dir === 'h') {
       for (let i = 0; i < ship.len; i++) {
@@ -27,7 +29,16 @@ const gameBoard = () => {
     }
   }
 
-  return { placeShip, board, receiveAttack }
+  const allSunk = () => {
+    for (let i = 0; i < ships.length; i++) {
+      if (ships[i].isSunk() === false) {
+        return false
+      }
+    }
+    return true
+  }
+
+  return { placeShip, board, receiveAttack, allSunk }
 }
 
 export default gameBoard
