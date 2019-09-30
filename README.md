@@ -1,3 +1,14 @@
+# Board
+
+   1 2 3 . .
+1 [1,1]
+2 [2,1]
+3 [3,1]
+.
+.
+
+[row,col]
+
 # Bulma Project
 This is a simple pack with all needed dependencies in order to build a front end project using Bulma framework.
 
