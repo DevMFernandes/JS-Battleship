@@ -6,15 +6,14 @@ const gameBoard = () => {
     if (b !== undefined && b !== 'missed' && b !== 'hit') {
       board[location].hit(location)
       board[location] = 'hit'
+      return 'hit'
     } else if (b === 'hit') {
-      // duplicate move on a hit postion
-      console.log('duplicate move, already hit')
+      return 'duplicate-hit'
     } else if (b === 'missed') {
-      // duplicate move on a missed position
-      console.log('duplicate move, already missed here')
+      return 'duplicate-miss'
     } else {
-      // position neither hit nor missed (so undefined)
       board[location] = 'missed'
+      return 'miss'
     }
   }
 

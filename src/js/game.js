@@ -1,7 +1,7 @@
 import '../mystyles.scss'
 import gameBoard from './gameboard'
 import ship from './ship'
-import player from './players'
+import { player, computerPlay } from './players'
 
 let turn = 'player'
 
@@ -33,24 +33,6 @@ console.log(board2)
 // loop here
 // check allsunk
 
-const buttons = document.querySelectorAll('.player1 > button')
-const compMove = document.querySelector('.computer > button')
-
-for (let i = 0; i < buttons.length; i++) {
-  const button = buttons[i]
-  button.addEventListener('click', () => {
-    const loc = button.getAttribute('value')
-    player1.attack(loc)
-    console.log(board2.allSunk())
-    console.log(board2)
-  })
-}
-
-compMove.addEventListener('click', () => {
-  player2.attack()
-  console.log(board1)
-})
-
 const build = (len) => {
   const pBoard = document.querySelector('#playerBoard')
   const cBoard = document.querySelector('#computerBoard')
@@ -71,19 +53,32 @@ const build = (len) => {
       div.addEventListener('click', () => {
         if (turn === 'player') {
           const loc = div.getAttribute('data-loc')
-          player1.attack(loc)
-          if (board2.board[loc] === 'hit') {
+          const status = player1.attack(loc)
+
+          if (status === 'hit') {
             div.classList.add('red')
-          } else {
+            updateMsg('Computer turn')
+            const compStatus = player2.attack()
+          } else if (status === 'duplicate-miss') {
+            updateMsg('Already missed here. Try again.')
+          } else if (status === 'duplicate-hit') {
+            updateMsg('Already hit here. Try again.')
+          } else if (status === 'miss') {
+            updateMsg('You missed! Computer turn')
             div.classList.add('blue')
+            const compStatus2 = player2.attack()
+          } else {
+            console.log('Something has gone very wrong.')
           }
-          // turn = 'computer'
-          // computerPlay()
+
         }
       })
     }
   }
-  // append html
+
+  const updateMsg = (msg) => {
+    document.querySelector('.msg').innerHTML = msg
+  }
 }
 
 build(10)

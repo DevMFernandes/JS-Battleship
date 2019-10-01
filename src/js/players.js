@@ -3,9 +3,12 @@
 const player = (enemyBoard, computer = false) => {
   const attack = (location) => {
     if (computer) {
-      enemyBoard.receiveAttack(compLoc(10, enemyBoard))
+      const loc2 = compLoc(10, enemyBoard)
+      enemyBoard.receiveAttack(loc2)
+      console.log(enemyBoard.board)
+      return loc2
     } else {
-      enemyBoard.receiveAttack(location)
+      return enemyBoard.receiveAttack(location)
     }
   }
   return { attack }
@@ -21,4 +24,9 @@ const compLoc = (len, enemyBoard) => {
   return loc
 }
 
-export default player
+const computerPlay = () => {
+  // turn = 'computer'
+  console.log('computer should play now')
+}
+
+export { player, computerPlay }
