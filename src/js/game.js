@@ -1,9 +1,7 @@
 import '../mystyles.scss'
 import gameBoard from './gameboard'
 import ship from './ship'
-import { player, computerPlay } from './players'
-
-let turn = 'player'
+import player from './players'
 
 // export const boardSize = 10
 
@@ -26,12 +24,6 @@ board2.placeShip(cruiser2, '4,3', 'v')
 // create players
 const player1 = player(board2)
 const player2 = player(board1, true)
-console.log(board1)
-console.log(board2)
-// loop to create all this stuff
-// keep track of turns
-// loop here
-// check allsunk
 
 const build = (len) => {
   const pBoard = document.querySelector('#playerBoard')
@@ -41,6 +33,7 @@ const build = (len) => {
   boards.forEach(board => {
     board.setAttribute('style', `height: ${30 * len}px; width: ${30 * len}px;`)
   })
+
   for (let i = 1; i <= len; i++) {
     for (let j = 1; j <= len; j++) {
       const div = document.createElement('div')
@@ -51,32 +44,43 @@ const build = (len) => {
       cBoard.appendChild(div2)
 
       div.addEventListener('click', () => {
-        if (turn === 'player') {
-          const loc = div.getAttribute('data-loc')
-          const status = player1.attack(loc)
+        const loc = div.getAttribute('data-loc')
+        const status = player1.attack(loc)
 
-          if (status === 'hit') {
-            div.classList.add('red')
-            cBoard.querySelector(`[data-loc="${player2.attack()}"]`).classList.add('red')
-            updateMsg('Nice hit!')
-          } else if (status === 'duplicate-miss') {
-            updateMsg('Already missed here. Try again.')
-          } else if (status === 'duplicate-hit') {
-            updateMsg('Already hit here. Try again.')
-          } else if (status === 'miss') {
-            updateMsg('You missed!')
-            div.classList.add('blue')
-            cBoard.querySelector(`[data-loc="${player2.attack()}"]`).classList.add('blue')
-            // const compStatus2 = player2.attack()
-          } else {
-            console.log('Something has gone very wrong.')
-          }
+        if (status === 'hit') {
+          div.classList.add('red')
+          computerPlay(player2)
+          updateMsg('Nice hit!')
+        } else if (status === 'duplicate-miss') {
+          updateMsg('Already missed here. Try again.')
+        } else if (status === 'duplicate-hit') {
+          updateMsg('Already hit here. Try again.')
+        } else if (status === 'miss') {
+          updateMsg('You missed!')
+          div.classList.add('blue')
+          computerPlay(player2)
+        } else {
+          console.log('Something has gone very wrong.')
         }
       })
     }
   }
 
-  
+  const showBoats = (board) => {
+    for (const prop in board.board) {
+      document.querySelector(`#computerBoard [data-loc="${prop}"]`).classList.add('active')
+    }
+  }
+
+  showBoats(board1)
+
+  const computerPlay = (player) => {
+    const move = player2.attack()
+    const loc = move[0]
+    const status = move[1]
+    const moveClass = status === 'hit' ? 'red' : 'blue'
+    document.querySelector(`#computerBoard [data-loc="${loc}"]`).classList.add(moveClass)
+  }
 
   const updateMsg = (msg) => {
     document.querySelector('.msg').innerHTML = msg

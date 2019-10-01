@@ -41,11 +41,15 @@ $input-shadow: none;
   background-color: white;
   display: flex;
   flex-wrap: wrap;
+  margin:0 auto;
   > div {
     height: 30px;
     width: 30px;
     border: 1px solid black;
     box-sizing: border-box;
+  }
+  .active{
+    background:gray;
   }
 }
 
@@ -57,4 +61,7 @@ $input-shadow: none;
   background-color: blue;
 }
 
-.columns { margin: 20px; }
+.columns {
+  margin: 20px;
+  text-align:center;
+}

@@ -4635,12 +4635,15 @@ a.navbar-item,
 .board {
   background-color: white;
   display: flex;
-  flex-wrap: wrap; }
+  flex-wrap: wrap;
+  margin: 0 auto; }
   .board > div {
     height: 30px;
     width: 30px;
     border: 1px solid black;
     box-sizing: border-box; }
+  .board .active {
+    background: gray; }
 
 .red {
   background-color: red; }
@@ -4649,5 +4652,6 @@ a.navbar-item,
   background-color: blue; }
 
 .columns {
-  margin: 20px; }
+  margin: 20px;
+  text-align: center; }
 
