@@ -1,9 +1,9 @@
-import boardSize from './game'
+// import boardSize from './game'
 
 const player = (enemyBoard, computer = false) => {
   const attack = (location) => {
     if (computer) {
-      enemyBoard.receiveAttack(compLoc(boardSize, enemyBoard))
+      enemyBoard.receiveAttack(compLoc(10, enemyBoard))
     } else {
       enemyBoard.receiveAttack(location)
     }
