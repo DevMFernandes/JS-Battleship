@@ -6,6 +6,7 @@ const player = (enemyBoard, computer = false) => {
       const loc2 = compLoc(10, enemyBoard)
       enemyBoard.receiveAttack(loc2)
       console.log(enemyBoard.board)
+      console.log(enemyBoard.board[loc2])
       return loc2
     } else {
       return enemyBoard.receiveAttack(location)

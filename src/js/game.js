@@ -57,24 +57,26 @@ const build = (len) => {
 
           if (status === 'hit') {
             div.classList.add('red')
-            updateMsg('Computer turn')
-            const compStatus = player2.attack()
+            cBoard.querySelector(`[data-loc="${player2.attack()}"]`).classList.add('red')
+            updateMsg('Nice hit!')
           } else if (status === 'duplicate-miss') {
             updateMsg('Already missed here. Try again.')
           } else if (status === 'duplicate-hit') {
             updateMsg('Already hit here. Try again.')
           } else if (status === 'miss') {
-            updateMsg('You missed! Computer turn')
+            updateMsg('You missed!')
             div.classList.add('blue')
-            const compStatus2 = player2.attack()
+            cBoard.querySelector(`[data-loc="${player2.attack()}"]`).classList.add('blue')
+            // const compStatus2 = player2.attack()
           } else {
             console.log('Something has gone very wrong.')
           }
-
         }
       })
     }
   }
+
+  
 
   const updateMsg = (msg) => {
     document.querySelector('.msg').innerHTML = msg
