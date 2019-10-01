@@ -13,9 +13,7 @@ test('player should be able to attack', () => {
 
 test('computer can play', () => {
   const board1 = gameBoard()
-  const ship1 = ship(1)
-  board1.placeShip(ship1, '1,1', 'v')
   const player2 = player(board1, true)
   player2.attack()
-  expect(ship1.isSunk()).toBe(true)
+  expect(Object.keys(board1.board).length).toBe(1)
 })

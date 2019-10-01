@@ -2,8 +2,9 @@
 
 const gameBoard = () => {
   const receiveAttack = (location) => {
-    if (board[location] !== undefined && board[location] !== 'missed') {
+    if (board[location] !== undefined && board[location] !== 'missed' && board[location] !== 'hit') {
       board[location].hit(location)
+      board[location] = 'hit'
     } else {
       board[location] = 'missed'
     }
