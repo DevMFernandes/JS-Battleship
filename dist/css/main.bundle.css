@@ -3851,3 +3851,18 @@ a.navbar-item,
     .section.is-large {
       padding: 18rem 1.5rem; } }
 
+.board {
+  display: flex;
+  flex-wrap: wrap; }
+  .board > div {
+    height: 30px;
+    width: 30px;
+    border: 1px solid black;
+    box-sizing: border-box; }
+
+.red {
+  background-color: red; }
+
+.blue {
+  background-color: blue; }
+

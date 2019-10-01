@@ -1,7 +1,9 @@
-// import '../mystyles.scss'
+import '../mystyles.scss'
 import gameBoard from './gameboard'
 import ship from './ship'
 import player from './players'
+
+let turn = 'player'
 
 // export const boardSize = 10
 
@@ -52,11 +54,36 @@ compMove.addEventListener('click', () => {
 const build = (len) => {
   const pBoard = document.querySelector('#playerBoard')
   const cBoard = document.querySelector('#computerBoard')
-  const html = ''
-  for (let i = 0; i < len; i++) {
-    for(let j = 0; j < len; j++) {
-      `<div id='${i},${j}'></div>`
+  const boards = document.querySelectorAll('.board')
+
+  boards.forEach(board => {
+    board.setAttribute('style', `height: ${30 * len}px; width: ${30 * len}px;`)
+  })
+  for (let i = 1; i <= len; i++) {
+    for (let j = 1; j <= len; j++) {
+      const div = document.createElement('div')
+      const div2 = document.createElement('div')
+      div.setAttribute('data-loc', `${i},${j}`)
+      div2.setAttribute('data-loc', `${i},${j}`)
+      pBoard.appendChild(div)
+      cBoard.appendChild(div2)
+
+      div.addEventListener('click', () => {
+        if (turn === 'player') {
+          const loc = div.getAttribute('data-loc')
+          player1.attack(loc)
+          if (board2.board[loc] === 'hit') {
+            div.classList.add('red')
+          } else {
+            div.classList.add('blue')
+          }
+          // turn = 'computer'
+          // computerPlay()
+        }
+      })
     }
   }
   // append html
 }
+
+build(10)

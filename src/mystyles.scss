@@ -35,3 +35,22 @@ $input-shadow: none;
 @import "../node_modules/bulma/sass/components/navbar.sass";
 @import "../node_modules/bulma/sass/layout/hero.sass";
 @import "../node_modules/bulma/sass/layout/section.sass";
+
+.board {
+  display: flex;
+  flex-wrap: wrap;
+  > div {
+    height: 30px;
+    width: 30px;
+    border: 1px solid black;
+    box-sizing: border-box;
+  }
+}
+
+.red {
+  background-color: red;
+}
+
+.blue {
+  background-color: blue;
+}
