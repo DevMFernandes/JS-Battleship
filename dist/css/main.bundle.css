@@ -4653,3 +4653,6 @@ a.navbar-item,
   margin: 20px;
   text-align: center; }
 
+#playerBoard.gameover {
+  pointer-events: none; }
+

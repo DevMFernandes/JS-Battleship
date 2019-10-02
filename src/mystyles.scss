@@ -37,6 +37,7 @@ $input-shadow: none;
 @import "../node_modules/bulma/sass/layout/hero.sass";
 @import "../node_modules/bulma/sass/layout/section.sass";
 
+
 .board {
   background-color: white;
   display: flex;
@@ -53,7 +54,7 @@ $input-shadow: none;
   }
   .red {
     background-color: red;
-  } 
+  }
   .blue {
     background-color: blue;
   }
@@ -62,4 +63,8 @@ $input-shadow: none;
 .columns {
   margin: 20px;
   text-align:center;
+}
+
+#playerBoard.gameover{
+  pointer-events:none;
 }
