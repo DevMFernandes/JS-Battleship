@@ -4632,6 +4632,10 @@ a.navbar-item,
     .section.is-large {
       padding: 18rem 1.5rem; } }
 
+.msg {
+  padding: 20px;
+  border-bottom: 1px solid black; }
+
 .board {
   height: 300px;
   width: 300px;
@@ -4661,4 +4665,10 @@ a.navbar-item,
 .center {
   display: flex;
   justify-content: center; }
+
+form label {
+  margin-right: 20px; }
+
+form div {
+  margin: 15px 0; }
 

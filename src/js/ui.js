@@ -38,6 +38,7 @@ const build = (len, player1, player2, board1, board2) => {
     }
   }
   showBoats(board1)
+  buildDropdown(len)
 }
 
 const showBoats = (board) => {
@@ -77,6 +78,20 @@ const replayBtn = () => {
     location.reload()
     button.classList.add('is-hidden')
   })
+}
+
+const buildDropdown = (len) => {
+  for (let i = 1; i <= len; i++) {
+    const itemx = document.createElement('option')
+    itemx.setAttribute('value', i)
+    itemx.innerHTML = i
+    document.querySelector('.select-x').appendChild(itemx)
+
+    const itemy = document.createElement('option')
+    itemy.setAttribute('value', i)
+    itemy.innerHTML = i
+    document.querySelector('.select-y').appendChild(itemy)
+  }
 }
 
 export default build
