@@ -1,20 +1,5 @@
 import setLength from './config'
 
-const len = setLength()
-
-const moves = []
-
-const movesSetup = () => {
-  for (let i = 1; i <= len; i++) {
-    for (let j = 1; j <= len; j++) {
-      const move = `${i},${j}`
-      moves.push(move)
-    }
-  }
-}
-
-movesSetup()
-
 const player = (enemyBoard, computer = false) => {
   const attack = (location) => {
     if (computer) {
@@ -27,6 +12,19 @@ const player = (enemyBoard, computer = false) => {
   }
   return { attack }
 }
+
+const moves = []
+
+const movesSetup = () => {
+  for (let i = 1; i <= setLength(); i++) {
+    for (let j = 1; j <= setLength(); j++) {
+      const move = `${i},${j}`
+      moves.push(move)
+    }
+  }
+}
+
+movesSetup()
 
 const pickMove = () => {
   const rand = Math.floor(Math.random() * moves.length)

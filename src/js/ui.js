@@ -3,11 +3,6 @@
 const build = (len, player1, player2, board1, board2) => {
   const pBoard = document.querySelector('#playerBoard')
   const cBoard = document.querySelector('#computerBoard')
-  const boards = document.querySelectorAll('.board')
-
-  boards.forEach(board => {
-    board.setAttribute('style', `height: ${30 * len}px; width: ${30 * len}px;`)
-  })
 
   for (let i = 1; i <= len; i++) {
     for (let j = 1; j <= len; j++) {
@@ -25,7 +20,7 @@ const build = (len, player1, player2, board1, board2) => {
         if (status === 'hit') {
           div.classList.add('red')
           updateMsg('Nice hit!')
-          if (!gameOver(board2)) {
+          if (!gameOver(board2, 'You')) {
             computerPlay(player2, board1)
           }
         } else if (status === 'duplicate-miss') {
@@ -58,7 +53,7 @@ const computerPlay = (player, board) => {
   const moveClass = status === 'hit' ? 'red' : 'blue'
   document.querySelector(`#computerBoard [data-loc="${loc}"]`).classList.add(moveClass)
   if (status === 'hit') {
-    gameOver(board)
+    gameOver(board, 'Computer')
   }
 }
 
@@ -66,12 +61,22 @@ const updateMsg = (msg) => {
   document.querySelector('.msg').innerHTML = msg
 }
 
-const gameOver = (board) => {
+const gameOver = (board, winner) => {
   if (board.allSunk()) {
-    updateMsg('Game Over')
+    updateMsg(`Game Over. ${winner} won!`)
     document.querySelector('#playerBoard').classList.add('gameover')
+    replayBtn()
     return true
   }
-
 }
+
+const replayBtn = () => {
+  const button = document.querySelector('.replay')
+  button.classList.remove('is-hidden')
+  button.addEventListener('click', () => {
+    location.reload()
+    button.classList.add('is-hidden')
+  })
+}
+
 export default build

@@ -37,15 +37,19 @@ $input-shadow: none;
 @import "../node_modules/bulma/sass/layout/hero.sass";
 @import "../node_modules/bulma/sass/layout/section.sass";
 
+$columns: 10;
+$cellSize: 30px;
 
 .board {
+  height: $columns * $cellSize;
+  width: $columns * $cellSize;
   background-color: white;
   display: flex;
   flex-wrap: wrap;
   margin:0 auto;
   > div {
-    height: 30px;
-    width: 30px;
+    height: $cellSize;
+    width: $cellSize;
     border: 1px solid black;
     box-sizing: border-box;
   }
@@ -67,4 +71,9 @@ $input-shadow: none;
 
 #playerBoard.gameover{
   pointer-events:none;
+}
+
+.center {
+  display: flex;
+  justify-content: center;
 }

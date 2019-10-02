@@ -4633,6 +4633,8 @@ a.navbar-item,
       padding: 18rem 1.5rem; } }
 
 .board {
+  height: 300px;
+  width: 300px;
   background-color: white;
   display: flex;
   flex-wrap: wrap;
@@ -4655,4 +4657,8 @@ a.navbar-item,
 
 #playerBoard.gameover {
   pointer-events: none; }
+
+.center {
+  display: flex;
+  justify-content: center; }
 
