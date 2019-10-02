@@ -1,5 +1,3 @@
-// import ship from './ship'
-
 const gameBoard = () => {
   const receiveAttack = (location) => {
     const b = board[location]

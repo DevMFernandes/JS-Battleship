@@ -4644,12 +4644,10 @@ a.navbar-item,
     box-sizing: border-box; }
   .board .active {
     background: gray; }
-
-.red {
-  background-color: red; }
-
-.blue {
-  background-color: blue; }
+  .board .red {
+    background-color: red; }
+  .board .blue {
+    background-color: blue; }
 
 .columns {
   margin: 20px;

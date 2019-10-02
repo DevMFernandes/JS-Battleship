@@ -2,8 +2,7 @@ import '../mystyles.scss'
 import gameBoard from './gameboard'
 import ship from './ship'
 import player from './players'
-
-// export const boardSize = 10
+import setLength from './config'
 
 // create gameboards
 const board1 = gameBoard()
@@ -87,4 +86,4 @@ const build = (len) => {
   }
 }
 
-build(10)
+build(setLength())
