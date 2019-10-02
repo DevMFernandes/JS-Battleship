@@ -1,3 +1,6 @@
+import setLength from './config'
+import ship from './ship'
+
 const build = (len, player1, player2, board1, board2) => {
   const pBoard = document.querySelector('#playerBoard')
   const cBoard = document.querySelector('#computerBoard')
@@ -41,16 +44,17 @@ const build = (len, player1, player2, board1, board2) => {
 
 const placeOnBoard = (ships, board, names) => {
   const addBtn = document.querySelector('.add-ship')
-  const orientation = document.querySelector('.orientation').value
-  const xCoord = document.querySelector('.select-x').value
-  const yCoord = document.querySelector('.select-y').value
 
   let i = 0
+
   document.querySelector('.name').innerHTML = Object.keys(names)[i]
-  const len = Object.values(names)[i]
-  document.querySelector('.length').innerHTML = `Length: ${len}`
+  document.querySelector('.length').innerHTML = `Length: ${Object.values(names)[i]}`
 
   addBtn.addEventListener('click', () => {
+    const len = Object.values(names)[i]
+    const orientation = document.querySelector('.orientation').value
+    const xCoord = document.querySelector('.select-x').value
+    const yCoord = document.querySelector('.select-y').value
     if (checkAvail(board.board, orientation, xCoord, yCoord, len)) {
       board.placeShip(ships[i], `${xCoord},${yCoord}`, orientation)
       i += 1
@@ -61,27 +65,40 @@ const placeOnBoard = (ships, board, names) => {
         document.querySelector('#play-here').classList.remove('is-hidden')
         document.querySelector('#add-ship').classList.add('is-hidden')
       }
-    } else {
-      updateMsg('Cannot place ship on top of existing ship!')
     }
   })
 }
 
-const checkAvail = (board, o, x, y, len) => {
+const checkAvail = (board, o, x, y, shipLen) => {
   if (o === 'h') {
-    for (let i = 0; i < len; i++) {
-      if (board[`${x},${y + i}`]) {
+    if (parseInt(y) + shipLen - 1 > setLength()) {
+      updateMsg('Ship cannot be outside of the board!')
+      return false
+    }
+    for (let i = 0; i < shipLen; i++) {
+      if (board[`${x},${parseInt(y) + i}`]) {
+        updateMsg('Cannot place ship on top of existing ship!')
         return false
+      } else {
+        updateMsg('Ship placed!')
+        return true
       }
     }
-  } else if (o === 'v') {
-    for (let j = 0; j < len; j++) {
-      if (board[`${x + j},${y}`]) {
+  }
+  if (o === 'v') {
+    if (parseInt(x) + shipLen - 1 > setLength()) {
+      updateMsg('Ship cannot be outside of the board!')
+      return false
+    }
+    for (let j = 0; j < shipLen; j++) {
+      if (board[`${parseInt(x) + j},${y}`]) {
+        updateMsg('Cannot place ship on top of existing ship!')
         return false
+      } else {
+        updateMsg('Ship placed!')
+        return true
       }
     }
-  } else {
-    return true
   }
 }
 
