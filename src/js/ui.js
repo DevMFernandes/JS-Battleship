@@ -39,20 +39,50 @@ const build = (len, player1, player2, board1, board2) => {
   buildDropdown(len)
 }
 
-const placeOnBoard = (ships = [], board) => {
+const placeOnBoard = (ships, board, names) => {
   const addBtn = document.querySelector('.add-ship')
-  const orientation = document.querySelector('.orientation')
-  const xCoord = document.querySelector('.select-x')
-  const yCoord = document.querySelector('.select-y')
+  const orientation = document.querySelector('.orientation').value
+  const xCoord = document.querySelector('.select-x').value
+  const yCoord = document.querySelector('.select-y').value
 
   let i = 0
+  document.querySelector('.name').innerHTML = Object.keys(names)[i]
+  const len = Object.values(names)[i]
+  document.querySelector('.length').innerHTML = `Length: ${len}`
 
   addBtn.addEventListener('click', () => {
-    board.placeShip(ships[i], `${xCoord.value},${yCoord.value}`, orientation.value)
-    console.log(ships[i])
-    i += 1
-    showBoats(board)
+    if (checkAvail(board.board, orientation, xCoord, yCoord, len)) {
+      board.placeShip(ships[i], `${xCoord},${yCoord}`, orientation)
+      i += 1
+      showBoats(board)
+      document.querySelector('.name').innerHTML = Object.keys(names)[i]
+      document.querySelector('.length').innerHTML = `Length: ${Object.values(names)[i]}`
+      if (i === ships.length) {
+        document.querySelector('#play-here').classList.remove('is-hidden')
+        document.querySelector('#add-ship').classList.add('is-hidden')
+      }
+    } else {
+      updateMsg('Cannot place ship on top of existing ship!')
+    }
   })
+}
+
+const checkAvail = (board, o, x, y, len) => {
+  if (o === 'h') {
+    for (let i = 0; i < len; i++) {
+      if (board[`${x},${y + i}`]) {
+        return false
+      }
+    }
+  } else if (o === 'v') {
+    for (let j = 0; j < len; j++) {
+      if (board[`${x + j},${y}`]) {
+        return false
+      }
+    }
+  } else {
+    return true
+  }
 }
 
 const showBoats = (board) => {

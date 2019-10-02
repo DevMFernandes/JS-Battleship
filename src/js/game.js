@@ -8,20 +8,20 @@ import { build, placeOnBoard } from './ui'
 const board1 = gameBoard()
 const board2 = gameBoard()
 
-const ships = {
-  battleship: 3,
-  carrier: 2,
-  cruiser: 5,
-  destroyer: 4
+const shipNames = {
+  Battleship: 3,
+  Carrier: 2,
+  Cruiser: 5,
+  Destroyer: 4
 }
 const humanShips = []
 const computerShips = []
-for (const prop in ships) {
-  humanShips.push(ship(ships[prop]))
-  computerShips.push(ship(ships[prop]))
+for (const prop in shipNames) {
+  humanShips.push(ship(shipNames[prop]))
+  computerShips.push(ship(shipNames[prop]))
 }
 
-placeOnBoard(humanShips, board2)
+placeOnBoard(humanShips, board1, shipNames)
 
 // Human places ships
 // board1.placeShip(humanShips[0], '1,1', 'h')
@@ -34,7 +34,7 @@ placeOnBoard(humanShips, board2)
 board2.placeShip(computerShips[0], '2,1', 'h')
 board2.placeShip(computerShips[1], '4,3', 'v')
 board2.placeShip(computerShips[2], '4,1', 'v')
-board2.placeShip(computerShips[3], '2,2', 'h')
+board2.placeShip(computerShips[3], '5,2', 'h')
 
 const player1 = player(board2)
 const player2 = player(board1, true)

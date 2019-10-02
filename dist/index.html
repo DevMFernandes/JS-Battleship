@@ -14,14 +14,15 @@
   <p class="msg title has-text-centered">Welcome!</p>
 
   <div class="columns">
-    <div class="column is-hidden">
-      <p class="title is-2">Play here</p>
+    <div id="play-here" class="column is-hidden">
+      <p class="title is-4">Play here</p>
       <div id="playerBoard" class="board"></div>
     </div>
-    <div class="column">
+    <div id="add-ship" class="column">
+      <p class="title is-4">Set up your board</p>
       <form>
-        <p class="title is-5">Battleship</p>
-        <p class="subtitle is-6">Length 5</p>
+        <p class="title is-5 name"></p>
+        <p class="subtitle is-6 length"></p>
         <div>
           <label class="">Orientation</label>
           <select class="orientation">
@@ -30,12 +31,12 @@
           </select>
         </div>
         <div>
-          <label>X-Coordinate</label>
+          <label>Row:</label>
           <select class='select-x' >
           </select>
         </div>
         <div>
-          <label>Y-Coordinate</label>
+          <label>Column:</label>
           <select class='select-y' >
           </select>
         </div>
@@ -44,7 +45,7 @@
       </form>
     </div>
     <div class="column">
-        <p class="title is-2">Computer moves</p>
+        <p class="title is-4">Your Board / Computer attacks</p>
       <div id="computerBoard" class="board"></div>
     </div>
   </div>
