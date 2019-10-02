@@ -1,5 +1,3 @@
-// import gameBoard from './gameboard'
-
 const build = (len, player1, player2, board1, board2) => {
   const pBoard = document.querySelector('#playerBoard')
   const cBoard = document.querySelector('#computerBoard')
@@ -39,6 +37,22 @@ const build = (len, player1, player2, board1, board2) => {
   }
   showBoats(board1)
   buildDropdown(len)
+}
+
+const placeOnBoard = (ships = [], board) => {
+  const addBtn = document.querySelector('.add-ship')
+  const orientation = document.querySelector('.orientation')
+  const xCoord = document.querySelector('.select-x')
+  const yCoord = document.querySelector('.select-y')
+
+  let i = 0
+
+  addBtn.addEventListener('click', () => {
+    board.placeShip(ships[i], `${xCoord.value},${yCoord.value}`, orientation.value)
+    console.log(ships[i])
+    i += 1
+    showBoats(board)
+  })
 }
 
 const showBoats = (board) => {
@@ -94,4 +108,4 @@ const buildDropdown = (len) => {
   }
 }
 
-export default build
+export { build, placeOnBoard }

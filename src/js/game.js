@@ -3,7 +3,7 @@ import gameBoard from './gameboard'
 import ship from './ship'
 import player from './players'
 import setLength from './config'
-import build from './ui'
+import { build, placeOnBoard } from './ui'
 
 const board1 = gameBoard()
 const board2 = gameBoard()
@@ -21,11 +21,13 @@ for (const prop in ships) {
   computerShips.push(ship(ships[prop]))
 }
 
+placeOnBoard(humanShips, board2)
+
 // Human places ships
-board1.placeShip(humanShips[0], '1,1', 'h')
-board1.placeShip(humanShips[1], '3,1', 'v')
-board1.placeShip(humanShips[2], '3,4', 'v')
-board1.placeShip(humanShips[3], '6,6', 'v')
+// board1.placeShip(humanShips[0], '1,1', 'h')
+// board1.placeShip(humanShips[1], '3,1', 'v')
+// board1.placeShip(humanShips[2], '3,4', 'v')
+// board1.placeShip(humanShips[3], '6,6', 'v')
 
 // Computer places ships
 
