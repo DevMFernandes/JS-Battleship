@@ -31,7 +31,58 @@ $input-shadow: none;
 @import "../node_modules/bulma/sass/elements/button.sass";
 @import "../node_modules/bulma/sass/elements/container.sass";
 @import "../node_modules/bulma/sass/elements/title.sass";
+@import "../node_modules/bulma/sass/grid/columns.sass";
 @import "../node_modules/bulma/sass/form/_all.sass";
 @import "../node_modules/bulma/sass/components/navbar.sass";
 @import "../node_modules/bulma/sass/layout/hero.sass";
 @import "../node_modules/bulma/sass/layout/section.sass";
+
+$columns: 10;
+$cellSize: 30px;
+.msg{
+  padding:20px;
+  border-bottom:1px solid black;
+}
+.board {
+  height: $columns * $cellSize;
+  width: $columns * $cellSize;
+  background-color: white;
+  display: flex;
+  flex-wrap: wrap;
+  margin:0 auto;
+  > div {
+    height: $cellSize;
+    width: $cellSize;
+    border: 1px solid black;
+    box-sizing: border-box;
+  }
+  .active{
+    background:gray;
+  }
+  .red {
+    background-color: red;
+  }
+  .blue {
+    background-color: blue;
+  }
+}
+
+.columns {
+  margin: 20px;
+  text-align:center;
+}
+
+#playerBoard.gameover{
+  pointer-events:none;
+}
+
+.center {
+  display: flex;
+  justify-content: center;
+}
+form{
+    label{margin-right:20px;}
+    div{
+      margin:15px 0;
+    }
+}

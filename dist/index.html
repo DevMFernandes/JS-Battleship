@@ -1,41 +1,60 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>My custom Bulma website</title>
-    <link rel="stylesheet" href="css/main.bundle.css">
-  </head>
-  <body>
-     <h1 class="title">
-        Bulma
-      </h1>
 
-      <p class="subtitle">
-        Modern CSS framework based on <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flexible_Box_Layout/Basic_Concepts_of_Flexbox">Flexbox</a>
-      </p>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Battleship</title>
+  <link rel="stylesheet" href="css/main.bundle.css">
+</head>
 
-      <div class="field">
-        <div class="control">
-          <input class="input" type="text" placeholder="Input">
+<body>
+
+  <p class="msg title has-text-centered">Welcome!</p>
+
+  <div class="columns">
+    <div id="play-here" class="column is-hidden">
+      <p class="title is-4">Play here</p>
+      <div id="playerBoard" class="board"></div>
+    </div>
+    <div id="add-ship" class="column">
+      <p class="title is-4">Set up your board</p>
+      <form>
+        <p class="title is-5 name"></p>
+        <p class="subtitle is-6 length"></p>
+        <div>
+          <label class="">Orientation</label>
+          <select class="orientation">
+            <option value="h">horizontal</option>
+            <option value="v">vertical</option>
+          </select>
         </div>
-      </div>
+        <div>
+          <label>Row:</label>
+          <select class='select-x' >
+          </select>
+        </div>
+        <div>
+          <label>Column:</label>
+          <select class='select-y' >
+          </select>
+        </div>
 
-      <div class="field">
-        <p class="control">
-          <span class="select">
-            <select>
-              <option>Select dropdown</option>
-            </select>
-          </span>
-        </p>
-      </div>
+        <input type="button" value="Add Ship" class="button add-ship"/>
+      </form>
+    </div>
+    <div class="column">
+        <p class="title is-4">Your Board / Computer attacks</p>
+      <div id="computerBoard" class="board"></div>
+    </div>
+  </div>
 
-      <div class="buttons">
-        <a class="button is-primary">Primary</a>
-        <a class="button is-link">Link</a>
-      </div>
+  <div class="replay center is-hidden">
+    <button class="button is-medium is-info">Replay</button>
+  </div>
+
   <script src="./js/bundle.js"></script>
-  </body>
+</body>
+
 </html>
