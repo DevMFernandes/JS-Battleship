@@ -1,6 +1,7 @@
 # Battleship
 A simple single player battleship game where the player battles against the highly skilled computer trying to figure out where it's ships are placed, sinking all of them.  
-If the player fails to accomplish that before the computer does, they lose.
+If the player fails to accomplish that before the computer does, they lose.  
+You can play the live version [here](https://devmfernandes.github.io/JS-Battleship/dist).
 
 ## How to play
 Game starts presenting the player with ship placement options on the left, with information about ship name and length, and their board on the right.  
