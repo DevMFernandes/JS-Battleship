@@ -1,5 +1,5 @@
 import setLength from './config'
-import { updateMsg, showBoats } from './ui'
+import { updateMsg } from './ui'
 
 const gameBoard = () => {
   const receiveAttack = (location) => {
