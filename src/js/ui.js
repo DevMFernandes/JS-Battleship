@@ -1,5 +1,3 @@
-import setLength from './config'
-import ship from './ship'
 
 const build = (len, player1, player2, board1, board2) => {
   const pBoard = document.querySelector('#playerBoard')
@@ -55,7 +53,7 @@ const placeOnBoard = (ships, board, names) => {
     const orientation = document.querySelector('.orientation').value
     const xCoord = document.querySelector('.select-x').value
     const yCoord = document.querySelector('.select-y').value
-    if (checkAvail(board.board, orientation, xCoord, yCoord, len)) {
+    if (board.checkAvail(orientation, xCoord, yCoord, len)) {
       board.placeShip(ships[i], `${xCoord},${yCoord}`, orientation)
       i += 1
       showBoats(board)
@@ -67,39 +65,6 @@ const placeOnBoard = (ships, board, names) => {
       }
     }
   })
-}
-
-const checkAvail = (board, o, x, y, shipLen) => {
-  if (o === 'h') {
-    if (parseInt(y) + shipLen - 1 > setLength()) {
-      updateMsg('Ship cannot be outside of the board!')
-      return false
-    }
-    for (let i = 0; i < shipLen; i++) {
-      if (board[`${x},${parseInt(y) + i}`]) {
-        updateMsg('Cannot place ship on top of existing ship!')
-        return false
-      } else {
-        updateMsg('Ship placed!')
-        return true
-      }
-    }
-  }
-  if (o === 'v') {
-    if (parseInt(x) + shipLen - 1 > setLength()) {
-      updateMsg('Ship cannot be outside of the board!')
-      return false
-    }
-    for (let j = 0; j < shipLen; j++) {
-      if (board[`${parseInt(x) + j},${y}`]) {
-        updateMsg('Cannot place ship on top of existing ship!')
-        return false
-      } else {
-        updateMsg('Ship placed!')
-        return true
-      }
-    }
-  }
 }
 
 const showBoats = (board) => {
@@ -155,4 +120,4 @@ const buildDropdown = (len) => {
   }
 }
 
-export { build, placeOnBoard }
+export { build, placeOnBoard, updateMsg, showBoats }

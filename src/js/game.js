@@ -23,18 +23,7 @@ for (const prop in shipNames) {
 
 placeOnBoard(humanShips, board1, shipNames)
 
-// Human places ships
-// board1.placeShip(humanShips[0], '1,1', 'h')
-// board1.placeShip(humanShips[1], '3,1', 'v')
-// board1.placeShip(humanShips[2], '3,4', 'v')
-// board1.placeShip(humanShips[3], '6,6', 'v')
-
-// Computer places ships
-
-board2.placeShip(computerShips[0], '2,1', 'h')
-board2.placeShip(computerShips[1], '4,3', 'v')
-board2.placeShip(computerShips[2], '4,1', 'v')
-board2.placeShip(computerShips[3], '5,2', 'h')
+board2.computerSetup(computerShips)
 
 const player1 = player(board2)
 const player2 = player(board1, true)
