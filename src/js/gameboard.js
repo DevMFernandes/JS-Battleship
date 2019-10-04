@@ -93,7 +93,7 @@ const gameBoard = () => {
     }
   }
 
-  return { placeShip, board, receiveAttack, allSunk, checkAvail, computerSetup }
+  return { placeShip, board, receiveAttack, allSunk, checkAvail, computerSetup, ships }
 }
 
 export default gameBoard
