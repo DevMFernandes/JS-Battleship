@@ -72,11 +72,10 @@ const gameBoard = () => {
         if (board[`${x},${parseInt(y) + i}`]) {
           updateMsg('Cannot place ship on top of existing ship!')
           return false
-        } else {
-          updateMsg('Ship placed!')
-          return true
         }
       }
+      updateMsg('Battleship')
+      return true
     }
     if (o === 'v') {
       if (parseInt(x) + shipLen - 1 > setLength()) {
@@ -87,11 +86,10 @@ const gameBoard = () => {
         if (board[`${parseInt(x) + j},${y}`]) {
           updateMsg('Cannot place ship on top of existing ship!')
           return false
-        } else {
-          updateMsg('Ship placed!')
-          return true
         }
       }
+      updateMsg('Battleship')
+      return true
     }
   }
 
